@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="PixelForge Studio — modern graphic design, thumbnails, logos and social media creatives.">
+<title>PixelForge Studio — Creative Design</title>
+<style>
+:root{
+  --bg:#0b0d12;--surface:#121620;--surface2:#181d29;--text:#f6f7fb;
+  --muted:#a8afbf;--line:#2a3040;--accent:#8b5cf6;--accent2:#22d3ee;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.container{width:min(1120px,92%);margin:auto}
+nav{position:sticky;top:0;z-index:20;background:rgba(11,13,18,.82);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.navin{height:70px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:900;letter-spacing:-.04em;font-size:20px}
+.logo span{color:var(--accent2)}
+.links{display:flex;gap:24px;color:var(--muted);font-size:14px}
+.links a:hover{color:var(--text)}
+.menu{display:none;background:none;border:1px solid var(--line);color:var(--text);border-radius:10px;padding:8px 10px}
+.hero{padding:95px 0 70px;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;width:420px;height:420px;right:-100px;top:-130px;background:radial-gradient(circle,rgba(139,92,246,.28),transparent 65%);pointer-events:none}
+.badge{display:inline-flex;border:1px solid var(--line);background:var(--surface);padding:8px 12px;border-radius:999px;color:#cbd2df;font-size:13px}
+h1{font-size:clamp(48px,8vw,92px);line-height:.95;letter-spacing:-.07em;margin:22px 0}
+.gradient{background:linear-gradient(100deg,var(--text),#b8a1ff,var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:650px;color:var(--muted);font-size:18px;line-height:1.7}
+.cta{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.btn{border:1px solid var(--line);padding:13px 18px;border-radius:12px;font-weight:750;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.primary{background:var(--text);color:#0b0d12;border-color:var(--text)}
+.secondary{background:var(--surface);color:var(--text)}
+section{padding:70px 0}
+.eyebrow{color:var(--accent2);font-size:12px;text-transform:uppercase;letter-spacing:.16em;font-weight:800}
+h2{font-size:42px;letter-spacing:-.04em;margin:10px 0 34px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px;transition:.2s}
+.card:hover{transform:translateY(-4px);border-color:#444c60}
+.icon{font-size:30px;margin-bottom:20px}
+.card h3{margin:0 0 8px;font-size:20px}
+.card p{margin:0;color:var(--muted);line-height:1.65}
+.work{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.project{min-height:230px;border-radius:22px;padding:28px;display:flex;flex-direction:column;justify-content:end;overflow:hidden;border:1px solid var(--line);background:
+linear-gradient(135deg,rgba(139,92,246,.28),rgba(34,211,238,.08) 55%,rgba(255,255,255,.02))}
+.project:nth-child(2){background:linear-gradient(135deg,rgba(34,211,238,.22),rgba(139,92,246,.10))}
+.project:nth-child(3){background:linear-gradient(135deg,rgba(255,180,80,.20),rgba(139,92,246,.10))}
+.project:nth-child(4){background:linear-gradient(135deg,rgba(255,80,150,.20),rgba(34,211,238,.10))}
+.project small{color:#d6dbe7}
+.project h3{font-size:27px;margin:6px 0}
+.price{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.price .card{position:relative}
+.price strong{font-size:34px}
+.price ul{padding:0 0 0 18px;color:var(--muted);line-height:2}
+.featured{border-color:#8061e9;box-shadow:0 0 0 1px rgba(139,92,246,.18)}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+input,textarea{width:100%;background:#0d1118;border:1px solid var(--line);color:var(--text);border-radius:12px;padding:13px;margin:7px 0 12px;outline:none}
+textarea{min-height:130px;resize:vertical}
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:13px}
+.toast{position:fixed;right:20px;bottom:20px;background:var(--text);color:#0b0d12;padding:13px 16px;border-radius:12px;display:none;font-weight:700;z-index:50}
+@media(max-width:760px){
+ .links{display:none}.menu{display:block}.links.open{display:flex;position:absolute;top:70px;left:0;right:0;background:var(--bg);padding:20px;flex-direction:column;border-bottom:1px solid var(--line)}
+ .hero{padding-top:65px}.grid,.price,.contact,.work{grid-template-columns:1fr}h2{font-size:34px}
+}
+</style>
+</head>
+<body>
+<nav>
+ <div class="container navin">
+  <a class="logo" href="#">PIXEL<span>FORGE</span></a>
+  <button class="menu" onclick="toggleMenu()">☰</button>
+  <div class="links" id="links"><a href="#services">Services</a><a href="#work">Work</a><a href="#pricing">Pricing</a><a href="#contact">Contact</a></div>
+ </div>
+</nav>
+
+<main>
+<section class="hero">
+ <div class="container">
+  <span class="badge">● Creative studio • Fast • Modern • Mobile-ready</span>
+  <h1>Design that makes<br><span class="gradient">people stop scrolling.</span></h1>
+  <p>PixelForge Studio creates bold thumbnails, logos, social posts and brand visuals for creators and small businesses.</p>
+  <div class="cta"><a class="btn primary" href="#contact">Start a project →</a><a class="btn secondary" href="#work">See the work</a></div>
+ </div>
+</section>
+
+<section id="services">
+ <div class="container">
+  <div class="eyebrow">What I do</div><h2>Creative services.</h2>
+  <div class="grid">
+   <article class="card"><div class="icon">◈</div><h3>YouTube Thumbnails</h3><p>High-impact thumbnail concepts designed to make a video stand out in a crowded feed.</p></article>
+   <article class="card"><div class="icon">✦</div><h3>Logo & Brand</h3><p>Clean logo concepts, color direction and simple brand systems for new projects.</p></article>
+   <article class="card"><div class="icon">▦</div><h3>Social Creatives</h3><p>Instagram, TikTok and Facebook graphics built in consistent visual styles.</p></article>
+ </div>
+ </div>
+</section>
+
+<section id="work">
+ <div class="container"><div class="eyebrow">Selected concepts</div><h2>A little visual energy.</h2>
+  <div class="work">
+   <article class="project"><small>01 / Thumbnail</small><h3>Bold Creator</h3><small>High contrast • Clear message</small></article>
+   <article class="project"><small>02 / Brand</small><h3>Nova Coffee</h3><small>Minimal • Premium • Friendly</small></article>
+   <article class="project"><small>03 / Social</small><h3>Launch Day</h3><small>Fast attention • Strong hierarchy</small></article>
+   <article class="project"><small>04 / Campaign</small><h3>Night Mode</h3><small>Modern • Digital • Memorable</small></article>
+  </div>
+ </div>
+</section>
+
+<section id="pricing">
+ <div class="container"><div class="eyebrow">Simple packages</div><h2>Start small. Grow later.</h2>
+  <div class="price">
+   <article class="card"><h3>Starter</h3><p>For one quick creative.</p><p><strong>PKR 500</strong></p><ul><li>1 design</li><li>1 revision</li><li>Fast delivery</li></ul></article>
+   <article class="card featured"><h3>Creator</h3><p>For regular content.</p><p><strong>PKR 1,500</strong></p><ul><li>3 designs</li><li>2 revisions</li><li>Consistent style</li></ul></article>
+   <article class="card"><h3>Brand</h3><p>For a new small business.</p><p><strong>PKR 3,000</strong></p><ul><li>Logo concept</li><li>3 social creatives</li><li>Basic visual direction</li></ul></article>
+  </div>
+ </div>
+</section>
+
+<section id="contact">
+ <div class="container">
+  <div class="eyebrow">Let's work</div><h2>Tell me what you need.</h2>
+  <div class="contact">
+   <div class="card"><h3>Earn from your skill</h3><p>Use this site as your portfolio and client landing page. Replace the demo work with your real designs, then share the site link with potential customers.</p><br><p><b>Note:</b> Pricing is editable. Do not promise guaranteed income.</p></div>
+   <form class="card" onsubmit="sendRequest(event)">
+    <label>Name</label><input id="name" required placeholder="Your name">
+    <label>What do you need?</label><textarea id="message" required placeholder="e.g. YouTube thumbnail for my video"></textarea>
+    <button class="btn primary" type="submit">Send request</button>
+   </form>
+  </div>
+ </div>
+</section>
+</main>
+<footer><div class="container">© 2026 PixelForge Studio · Built for creative work</div></footer>
+<div class="toast" id="toast">Request saved on this device.</div>
+<script>
+function toggleMenu(){document.getElementById('links').classList.toggle('open')}
+function sendRequest(e){
+ e.preventDefault();
+ const n=document.getElementById('name').value.trim(), m=document.getElementById('message').value.trim();
+ localStorage.setItem('pixelforge_request',JSON.stringify({name:n,message:m,time:new Date().toISOString()}));
+ document.getElementById('toast').style.display='block';
+ setTimeout(()=>document.getElementById('toast').style.display='none',2500);
+ e.target.reset();
+}
+</script>
+</body>
+</html>
